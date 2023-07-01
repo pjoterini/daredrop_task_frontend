@@ -1,17 +1,28 @@
+import { Grid, Typography, Box } from '@mui/material';
 import StreamerCard from './StreamerCard/StreamerCard';
-import { IStreamer } from './StreamerList.container';
+import { IStreamer } from 'context/StreamersContext';
 
 interface IProps {
-  streamers: IStreamer[] | null;
+  streamers: IStreamer[];
 }
 
 const StreamerList = ({ streamers }: IProps) => {
   return (
-    <>
-      {streamers?.map((streamer) => (
-        <StreamerCard streamer={streamer} key={streamer._id} />
-      ))}
-    </>
+    <Box pb={4}>
+      <Box maxWidth={1000} mx="auto" pt={6} pb={2}>
+        <Typography px={1} variant="h5" component="h1">
+          Streamers List
+        </Typography>
+      </Box>
+      <Grid width="100%" maxWidth={1000} container mx="auto">
+        {streamers.length > 0 &&
+          streamers.map((streamer) => (
+            <Grid xs={8} md={6} lg={4} p={1} item key={streamer._id} mx={0}>
+              <StreamerCard streamer={streamer} key={streamer._id} />
+            </Grid>
+          ))}
+      </Grid>
+    </Box>
   );
 };
 

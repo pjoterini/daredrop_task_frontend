@@ -1,29 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import StreamerList from './StreamerList.component';
-
-export interface IStreamer {
-  _id: string;
-  name: string;
-  description: string;
-  platform: string;
-  voteStatus: number;
-}
+import { useStreamersContext } from '../../context/useStreamersContext';
+import { StreamersReducerActionTypes } from '../../context/StreamersContext';
 
 const StreamerListContainer = () => {
-  const [streamers, setStreamers] = useState<IStreamer[] | null>(null);
+  const [streamers, dispatch] = useStreamersContext();
 
   useEffect(() => {
     const fetchStreamers = async () => {
-      const response = await fetch('http://localhost:4000/streamers');
+      const response = await fetch(`${import.meta.env.VITE_BASE_URL}/streamers`);
       const data = await response.json();
 
       if (response.ok) {
-        setStreamers(data);
+        dispatch({ type: StreamersReducerActionTypes.SET_STREAMERS, payload: data });
       }
     };
 
     fetchStreamers();
-  }, []);
+  }, [dispatch]);
 
   return <StreamerList streamers={streamers} />;
 };
