@@ -1,7 +1,7 @@
 import { Avatar, Box, Button, Card, CardActions, CardContent, Container, Stack, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { IStreamer } from '../../context/StreamersContext';
-import VoteSection from '../StreamerList/StreamerCard/VoteSection';
+import VoteSection from '../VoteSection/VoteSection';
 
 interface IProps {
   streamer?: IStreamer;
@@ -44,7 +44,7 @@ const StreamerRecord = ({ streamer }: IProps) => {
                 </Typography>
               </Box>
             </Stack>
-            <VoteSection voteStatus={streamer.voteStatus} />
+            <VoteSection voteStatus={streamer.voteStatus} streamerId={streamer._id} />
           </CardContent>
         )}
         <CardActions>

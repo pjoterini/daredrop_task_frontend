@@ -4,6 +4,7 @@ export enum StreamersReducerActionTypes {
   SET_STREAMERS = 'set streamers',
   SET_STREAMER = 'set streamer',
   CREATE_STREAMER = 'create streamer',
+  VOTE_STREAMER = 'vote streamer',
   DEFAULT = 'default',
 }
 
@@ -50,6 +51,17 @@ const streamersReducer = (state: StreamersState, action: ReducerAction): Streame
     case StreamersReducerActionTypes.CREATE_STREAMER:
       return {
         streamers: [...action.payload, ...state.streamers],
+      };
+    case StreamersReducerActionTypes.VOTE_STREAMER:
+      return {
+        streamers: [
+          ...state.streamers.map((object) => {
+            if (object._id === action.payload[0]._id) {
+              object.voteStatus = action.payload[0].voteStatus;
+            }
+            return object;
+          }),
+        ],
       };
     default:
       return state;

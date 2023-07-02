@@ -1,9 +1,9 @@
 import { Button, Card, CardActions, CardContent, Typography, Stack } from '@mui/material';
-import VoteSection from './VoteSection';
+import VoteSection from '../../VoteSection/VoteSection';
 import { IStreamer } from 'context/StreamersContext';
 import { Link } from 'react-router-dom';
 interface IProps {
-  streamer: IStreamer | null;
+  streamer: IStreamer;
 }
 
 const StreamerCard = ({ streamer }: IProps) => {
@@ -12,14 +12,14 @@ const StreamerCard = ({ streamer }: IProps) => {
       <CardContent sx={{ display: 'flex', justifyContect: 'space-between' }}>
         <Stack direction="row" width="100%" justifyContent="space-between" alignItems="center">
           <Typography variant="h5" component="div">
-            {streamer?.name}
+            {streamer.name}
           </Typography>
-          <VoteSection voteStatus={streamer?.voteStatus} />
+          <VoteSection voteStatus={streamer.voteStatus} streamerId={streamer._id} />
         </Stack>
       </CardContent>
       <CardActions>
-        <Link to={`/streamer/${streamer?._id}`}>
-          <Button sx={{ mx: 'auto', mb: 1 }} color="secondary" variant="contained" size="medium">
+        <Link to={`/streamer/${streamer._id}`}>
+          <Button sx={{ mx: 'auto', mb: 1, ml: 1 }} color="secondary" variant="contained" size="medium">
             check details
           </Button>
         </Link>
