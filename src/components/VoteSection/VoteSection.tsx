@@ -3,7 +3,7 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import { Button, Stack, Typography } from '@mui/material';
 import { StreamersReducerActionTypes } from '../../context/StreamersContext';
 import { useStreamersContext } from '../../context/useStreamersContext';
-import { hasNotVotedBefore, hasVotedDifferent, hasVotedSame } from './customAuth';
+import { hasNotVotedBefore, hasVotedDifferent, hasVotedSame } from './votingValidation';
 
 interface IProps {
   voteStatus: number | undefined;

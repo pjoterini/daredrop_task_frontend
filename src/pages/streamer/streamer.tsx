@@ -1,7 +1,7 @@
-import StreamerRecordContainer from '../../components/StreamerRecord/StreamerRecord.container';
+import StreamerDetailsContainer from '../../components/StreamerDetails/StreamerDetails.container';
 
 const Streamer = () => {
-  return <StreamerRecordContainer />;
+  return <StreamerDetailsContainer />;
 };
 
 export default Streamer;

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { IStreamer, StreamersReducerActionTypes } from '../../context/StreamersContext';
 import { useStreamersContext } from '../../context/useStreamersContext';
-import StreamerRecord from './StreamerRecord.component';
+import StreamerDetails from './StreamerDetails.component';
 
 const StreamerRecordContainer = () => {
   const [streamers, dispatch] = useStreamersContext();
@@ -26,7 +26,7 @@ const StreamerRecordContainer = () => {
     }
   }, [dispatch]);
 
-  return <StreamerRecord streamer={streamer} />;
+  return <StreamerDetails streamer={streamer} />;
 };
 
 export default StreamerRecordContainer;

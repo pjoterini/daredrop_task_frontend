@@ -15,12 +15,11 @@ const StreamerList = ({ streamers }: IProps) => {
         </Typography>
       </Box>
       <Grid width="100%" maxWidth={1000} container mx="auto">
-        {streamers.length > 0 &&
-          streamers.map((streamer) => (
-            <Grid xs={8} md={6} lg={4} p={1} item key={streamer._id} mx={0}>
-              <StreamerCard streamer={streamer} key={streamer._id} />
-            </Grid>
-          ))}
+        {streamers.map((streamer) => (
+          <Grid xs={8} md={6} lg={4} p={1} item key={streamer._id} mx={0}>
+            <StreamerCard streamer={streamer} key={streamer._id} />
+          </Grid>
+        ))}
       </Grid>
     </Box>
   );
