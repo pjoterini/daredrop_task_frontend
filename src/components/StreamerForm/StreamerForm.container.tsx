@@ -16,23 +16,22 @@ export interface StreamerFormProps {
   platform: Platform;
 }
 
+export type ResetForm = (
+  nextState?:
+    | Partial<
+        FormikState<{
+          name: string;
+          description: string;
+          platform: Platform;
+        }>
+      >
+    | undefined,
+) => void;
+
 const StreamerFormContainer = () => {
   const [, dispatch] = useStreamersContext();
 
-  const onSubmit = async (
-    values: StreamerFormProps,
-    resetForm: (
-      nextState?:
-        | Partial<
-            FormikState<{
-              name: string;
-              description: string;
-              platform: Platform;
-            }>
-          >
-        | undefined,
-    ) => void,
-  ) => {
+  const onSubmit = async (values: StreamerFormProps, resetForm: ResetForm) => {
     const response = await fetch('http://localhost:4000/streamers', {
       method: 'POST',
       body: JSON.stringify(values),

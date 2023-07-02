@@ -1,25 +1,11 @@
-import { Button, MenuItem, Typography, Card, Stack } from '@mui/material';
+import { Button, Card, MenuItem, Stack, Typography } from '@mui/material';
 import { Field, Form, Formik } from 'formik';
-import type { FormikState } from 'formik/dist/types';
 import { Select, TextField } from 'formik-mui';
-import { Platform, StreamerFormProps } from './StreamerForm.container';
+import { Platform, ResetForm, StreamerFormProps } from './StreamerForm.container';
 import { streamerFormSchema } from './StreamerForm.schema';
 
 interface IProps {
-  onSubmit: (
-    values: StreamerFormProps,
-    resetForm: (
-      nextState?:
-        | Partial<
-            FormikState<{
-              name: string;
-              description: string;
-              platform: Platform;
-            }>
-          >
-        | undefined,
-    ) => void,
-  ) => void;
+  onSubmit: (values: StreamerFormProps, resetForm: ResetForm) => void;
 }
 
 const StreamerForm = ({ onSubmit }: IProps) => {
